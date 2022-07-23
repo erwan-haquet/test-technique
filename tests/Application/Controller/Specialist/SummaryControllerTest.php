@@ -11,7 +11,7 @@ class SummaryControllerTest extends WebTestCase
 {
     use ResetDatabase, Factories;
 
-    public function testActiveSpecialistSummaryIsAvailable(): void
+    public function testSpecialistSummaryIsAvailable(): void
     {
         // Arrange
         $client = static::createClient();
@@ -48,6 +48,20 @@ class SummaryControllerTest extends WebTestCase
         $client->request('GET', sprintf("/psychologue/%s", $specialist->getId()));
 
         // Assert
-        $this->assertSelectorTextContains('.member-summary', $specialist->getDescription());
+        $this->assertSelectorTextContains('body', $specialist->getDescription());
+    }
+    
+    public function testSummaryDoesNotContainsPrivateInformation(): void
+    {
+        // Arrange
+        $client = static::createClient();
+        $specialist = SpecialistFactory::createOne(['active' => true]);
+
+        // Act
+        $client->request('GET', sprintf("/psychologue/%s", $specialist->getId()));
+
+        // Assert
+        $this->assertSelectorTextNotContains('body', $specialist->getMobile());
+        $this->assertSelectorTextNotContains('body', $specialist->getEmail());
     }
 }
