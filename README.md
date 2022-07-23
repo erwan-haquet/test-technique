@@ -28,9 +28,9 @@ Ce projet liste une série de psychologues sur la page d'accueil.
 
 Travail demandé :
 
-- [ ] Afficher la liste des psychologues en mettant les psychologues "En ligne" en premier.
+- [x] Afficher la liste des psychologues en mettant les psychologues "En ligne" en premier.
 
-- [ ] Créer une page "Détail" pour afficher les informations complètes du psychologue
+- [x] Créer une page "Détail" pour afficher les informations complètes du psychologue
 
 - [ ] Créer le système d'authentification (avec formulaire)
 
