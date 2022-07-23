@@ -40,6 +40,22 @@ class SpecialistRepository extends ServiceEntityRepository implements Specialist
         }
     }
 
+    public function findById(int $id, bool $activeOnly = true): ?Specialist
+    {
+        $qb = $this
+            ->createQueryBuilder('specialist')
+            ->where('specialist.id = :id')
+            ->setParameter('id', $id);
+
+        if (true === $activeOnly) {
+            $qb->andWhere('specialist.active = true');
+        }
+
+        return $qb
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
     public function search(bool $onlineFirst = true, bool $activeOnly = true): array
     {
         $qb = $this->createQueryBuilder('specialist');

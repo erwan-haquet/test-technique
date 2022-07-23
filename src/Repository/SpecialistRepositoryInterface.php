@@ -16,4 +16,10 @@ interface SpecialistRepositoryInterface
         bool $onlineFirst = false,
         bool $activeOnly = true
     ): array;
+
+    /**
+     * @param int $id id of the specialist
+     * @param bool $activeOnly filter on active specialists only
+     */
+    public function findById(int $id, bool $activeOnly = true): ?Specialist;
 }
