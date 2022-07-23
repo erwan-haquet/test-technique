@@ -38,7 +38,7 @@ final class SpecialistFactory extends ModelFactory
             'online' => self::faker()->boolean(),
             'active' => self::faker()->boolean(),
             'description' => self::faker()->text(),
-            'mobile' => '06' . self::faker()->numberBetween(100000, 999999),
+            'mobile' => '06' . self::faker()->numberBetween(10000000, 99999999),
             'email' => '06' . self::faker()->email(),
             'city' => self::faker()->city(),
         ];

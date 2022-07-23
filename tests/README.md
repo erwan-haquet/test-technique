@@ -1,14 +1,8 @@
 # Tests #
 
-Documentation pour la mise en place de test.
+Documentation pour le setup et lancement des tests.
 
-## SETUP ##
-
-Au premier lancement, il faudra créer la base de test via :
-
-``` bash
-$ symfony console doctrine:database:create --env=test
-$ symfony console doctrine:migration:migrate --env=test
-$ symfony console doctrine:fixtures:load --env=test
+- Lancer les tests :
+```bash
+$ php bin/phpunit
 ```
-
