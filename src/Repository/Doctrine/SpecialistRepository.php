@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Repository;
+namespace App\Repository\Doctrine;
 
 use App\Entity\Specialist;
+use App\Repository\SpecialistRepositoryInterface;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -14,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Specialist[]    findAll()
  * @method Specialist[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class SpecialistRepository extends ServiceEntityRepository
+class SpecialistRepository extends ServiceEntityRepository implements SpecialistRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -39,28 +40,18 @@ class SpecialistRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Specialist[] Returns an array of Specialist objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('s.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function search(bool $onlineFirst = true, bool $activeOnly = true): array
+    {
+        $qb = $this->createQueryBuilder('specialist');
 
-//    public function findOneBySomeField($value): ?Specialist
-//    {
-//        return $this->createQueryBuilder('s')
-//            ->andWhere('s.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        if (true === $activeOnly) {
+            $qb->andWhere('specialist.active = true');
+        }
+
+        if (true === $onlineFirst) {
+            $qb->orderBy('specialist.online', 'DESC');
+        }
+
+        return $qb->getQuery()->getResult();
+    }
 }

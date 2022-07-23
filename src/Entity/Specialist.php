@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\SpecialistRepository;
+use App\Repository\Doctrine\SpecialistRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: SpecialistRepository::class)]
