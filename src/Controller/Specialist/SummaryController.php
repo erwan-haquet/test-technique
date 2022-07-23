@@ -7,8 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/psychologue/{id}', name: 'app_specialist_show')]
-class ShowController extends AbstractController
+#[Route('/psychologue/{id}', name: 'app_specialist_summary')]
+class SummaryController extends AbstractController
 {
     public function __invoke(
         SpecialistRepositoryInterface $specialistRepository,
@@ -21,7 +21,7 @@ class ShowController extends AbstractController
             throw $this->createNotFoundException('No specialist found for id ' . $id);
         }
 
-        return $this->render('specialist/show.html.twig', [
+        return $this->render('specialist/summary.html.twig', [
             'specialist' => $specialist,
         ]);
     }
