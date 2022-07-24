@@ -1,6 +1,6 @@
 # Pros-Consulte #
 
-Pour faciliter la relecture, chaque [tâche du test](https://github.com/erwan-haquet/test-technique#taches-techniques) aura sa propre PR avec une description technique de son contenu.
+Pour faciliter la relecture, chaque [tâche du test](https://github.com/erwan-haquet/test-technique#tâches-techniques) aura sa propre PR avec une description technique de son contenu.
 
 ## Installation ##
  
