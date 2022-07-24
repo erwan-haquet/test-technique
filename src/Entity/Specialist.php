@@ -42,6 +42,11 @@ class Specialist
         return $this->id;
     }
 
+    public function getName(): string
+    {
+        return sprintf("%s %s", $this->firstName, $this->lastName);
+    }
+    
     public function getFirstName(): ?string
     {
         return $this->firstName;

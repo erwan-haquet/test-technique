@@ -12,7 +12,7 @@ class HomepageController extends AbstractController
 {
     public function __invoke(SpecialistRepositoryInterface $specialistRepository): Response
     {
-        return $this->render('default/index.html.twig', [
+        return $this->render('homepage/index.html.twig', [
             'specialists' => $specialistRepository->search(onlineFirst: true),
         ]);
     }

@@ -13,15 +13,27 @@
             {{ encore_entry_script_tags('app') }}
         {% endblock %}
     </head>
-    <header>
-        <div class="navbar navbar-dark bg-dark box-shadow">
-            <div class="container d-flex justify-content-between">
-                <a href="#" class="navbar-brand d-flex align-items-center"><strong>Pros-Consulte</strong>
-                </a>
-            </div>
-        </div>
-    </header>
     <body>
+        <header>
+            <div class="navbar navbar-dark bg-dark box-shadow">
+                <div class="container d-flex justify-content-between">
+                    <a href="{{ path('app_homepage') }}" class="navbar-brand d-flex align-items-center">
+                        <strong>Pros-Consulte</strong>
+                    </a>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <a class="btn btn-sm btn-outline-info" href="{{ path('app_logout') }}">
+                            Déconnexion
+                        </a>
+                    {% else  %}
+                        <a class="btn btn-sm btn-outline-info" href="{{ path('app_login') }}">
+                            Connexion
+                        </a>
+                    {% endif %}
+                   
+                </div>
+            </div>
+        </header>
+        
         {% block body %}{% endblock %}
     </body>
 </html>
